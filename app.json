@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "YogaProject",
-    "slug": "YogaProject",
+    "name": "navagationProject",
+    "slug": "navagationProject",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
