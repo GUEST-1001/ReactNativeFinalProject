@@ -12,6 +12,7 @@ import {
 
 import MainPage from "./MainPage";
 import ChoosePage from "./ChoosePage";
+import NavChoosePage from "./NavChoosePage";
 import SettingPage from "./SettingPage";
 
 const Drawer = createDrawerNavigator();
@@ -34,7 +35,7 @@ const DrawerMainPage = () => {
       <Drawer.Screen
         options={{ headerTitle: "", drawerLabel: "Choose" }}
         name="ChoosePage"
-        component={ChoosePage}
+        component={NavChoosePage}
       />
       <Drawer.Screen
         options={{ headerTitle: "", drawerLabel: "Setting" }}

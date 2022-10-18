@@ -14,7 +14,7 @@ import styles from "../StylesSheets/stryles";
 
 const MainPage = ({ navigation }) => {
   return (
-    <View>
+    <View  style={styles.container}>
       <Text>MainPage</Text>
     </View>
   );
