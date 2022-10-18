@@ -29,36 +29,37 @@ const styles = StyleSheet.create({
 
   Button: {
     width: "100%",
-    marginBottom: '1%',
+    marginBottom: '3%'
   },
   Felx: {
     flex: 1
   },
   ButtonContainer: {
-    height: '15%',
-    elevation: 3,
-    borderColor: "gray",
-    borderRadius: 5,
+    height : 120,
     flexDirection: "row",
+    borderRadius: 30,
+    backgroundColor: "#fff",
     marginHorizontal: 20,
+    padding:20
   },
   Thumbnail: {
-    width: "100%",
+    flex: 4,
+    alignItems: "end",
     resizeMode: "contain"
   },
   dataContent: {
-    marginTop: 5,
-    marginLeft: 15,
+    flex: 6,
+    alignItems: "center",
+    justifyContent: "center",
+    verticalAlign: "center",
+    marginStart:20,
+    textAlign:'center'
   },
-  title: {
-    color: "#444",
-    fontSize: 18,
+  data0Content: {
+  },
+  name: {
+    fontSize: 20,
     fontWeight: "bold",
-  },
-  detail: {
-    fontSize: 16,
-    color: "#888",
-    fontWeight: "700",
   },
 });
 

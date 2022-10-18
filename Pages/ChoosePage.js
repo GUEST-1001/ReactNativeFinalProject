@@ -7,6 +7,7 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
@@ -15,13 +16,11 @@ import axios from "axios";
 
 import styles from "../StylesSheets/stryles";
 
-
 //Start Page
 const ChoosePage = ({ navigation }) => {
   const [yogaPose, setYogaPose] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
 
   //Get Data
   const getData = async () => {
@@ -45,7 +44,6 @@ const ChoosePage = ({ navigation }) => {
     }, [])
   );
 
-
   //Show Error if Error
   if (error) {
     return (
@@ -64,9 +62,8 @@ const ChoosePage = ({ navigation }) => {
     );
   }
 
-
   //Render Yoga Pose
-  const _renderItem = ({ item, index }) => {
+  const _renderItem = ({ item }) => {
     return (
       <SafeAreaView style={styles.Felx}>
         <TouchableOpacity
@@ -80,14 +77,10 @@ const ChoosePage = ({ navigation }) => {
         >
           <View style={styles.Felx}>
             <View style={styles.ButtonContainer}>
-              <Image
-                style={styles.thumbnail}
-                source={{ uri: item.img_url }}
-                resizeMode="cover"
-              />
+              <Image style={styles.Thumbnail} source={{ uri: item.img_url }} />
 
               <View style={styles.dataContent}>
-                <Text style={styles.english_name}>{item.english_name}</Text>
+                <Text style={styles.name}>{item.english_name}</Text>
               </View>
             </View>
           </View>
@@ -96,17 +89,16 @@ const ChoosePage = ({ navigation }) => {
     );
   };
 
-
   //Main Function
   return (
-    <View style={styles.container}>
+    <ScrollView style={{ backgroundColor: "#63E0A3", padding: "5%" }}>
       <FlatList
         data={yogaPose}
         keyExtractor={(item) => item.id.toString()}
         renderItem={_renderItem}
         refreshing={loading}
       />
-    </View>
+    </ScrollView>
   );
 };
 
