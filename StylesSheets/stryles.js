@@ -25,37 +25,38 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: "center",
   },
+  Felx: {
+    flex: 1,
+  },
 
-
+  scollViewContainer: {
+    backgroundColor: "#63E0A3",
+    padding: "5%",
+  },
   Button: {
     width: "100%",
-    marginBottom: '3%'
-  },
-  Felx: {
-    flex: 1
+    marginBottom: "3%",
   },
   ButtonContainer: {
-    height : 120,
+    height: 120,
     flexDirection: "row",
     borderRadius: 30,
     backgroundColor: "#fff",
     marginHorizontal: 20,
-    padding:20
+    padding: 20,
   },
   Thumbnail: {
     flex: 4,
     alignItems: "end",
-    resizeMode: "contain"
+    resizeMode: "contain",
   },
   dataContent: {
     flex: 6,
     alignItems: "center",
     justifyContent: "center",
     verticalAlign: "center",
-    marginStart:20,
-    textAlign:'center'
-  },
-  data0Content: {
+    marginStart: 20,
+    textAlign: "center",
   },
   name: {
     fontSize: 20,

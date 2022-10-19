@@ -18,6 +18,8 @@ import styles from "../StylesSheets/stryles";
 
 //Start Page
 const ChoosePage = ({ navigation }) => {
+
+  //Set Variable
   const [yogaPose, setYogaPose] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -38,11 +40,9 @@ const ChoosePage = ({ navigation }) => {
   };
 
   //Call 'getData' Function
-  useFocusEffect(
-    useCallback(() => {
-      getData();
-    }, [])
-  );
+  useEffect(() => {
+    getData();
+  }, []);
 
   //Show Error if Error
   if (error) {
@@ -69,9 +69,10 @@ const ChoosePage = ({ navigation }) => {
         <TouchableOpacity
           style={styles.Button}
           onPress={() => {
-            navigation.navigate("", {
+            navigation.navigate("YogaInfo", {
               id: item.id,
-              title: item.english_name,
+              name: item.english_name,
+              url: item.img_url,
             });
           }}
         >
@@ -91,7 +92,7 @@ const ChoosePage = ({ navigation }) => {
 
   //Main Function
   return (
-    <ScrollView style={{ backgroundColor: "#63E0A3", padding: "5%" }}>
+    <ScrollView style={styles.scollViewContainer}>
       <FlatList
         data={yogaPose}
         keyExtractor={(item) => item.id.toString()}
