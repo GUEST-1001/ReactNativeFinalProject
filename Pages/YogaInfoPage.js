@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
@@ -64,26 +65,28 @@ const YogaInfoPage = ({ navigation, route }) => {
   //Render Yoga Pose
   const _renderItem = ({ item }) => {
     return (
-      <View>
-        <Text>{item.name}</Text>
-        <Text>{item.description}</Text>
-      </View>
+      <SafeAreaView>
+        <Text style={styles.infoText}>{item.name}</Text>
+        <Text style={styles.infoDes}>{item.description}</Text>
+      </SafeAreaView>
     );
   };
 
   return (
-    <View style={styles.container}>
-              <Image
-          style={styles.image}
-          source={{ uri: url }}
-        />
-      <Text>{name}</Text>
-      <FlatList
+    <View style={styles.infoContainer}>
+      <Image style={styles.infoImage} source={{ uri: url }} />
+      <View style={styles.infoNameCon}>
+        <Text style={styles.infoName}>{name}</Text>
+      </View>
+      <View style={styles.desConrainer}>
+        <FlatList
         data={info}
         keyExtractor={(item) => item.id.toString()}
         renderItem={_renderItem}
         refreshing={loading}
+        contentContainerStyle={{ flexGrow: 1, justifyContent:'center'}}
       />
+      </View>
     </View>
   );
 };

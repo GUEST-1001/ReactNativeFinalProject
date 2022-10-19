@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+
   scollViewContainer: {
     backgroundColor: "#63E0A3",
     padding: "5%",
@@ -61,6 +62,45 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+
+
+  infoContainer: {
+    flex: 1,
+    backgroundColor: "#63E0A3",
+    padding: "5%",
+  },
+  desConrainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 30,
+    backgroundColor: "#fff",
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    marginTop: 20,
+  },
+  infoImage: {
+    height: "40%",
+    resizeMode: "contain",
+  },
+  infoNameCon: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  infoName: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  infoText: {
+    fontWeight: "bold",
+    fontSize: 18,
+    marginTop: 20,
+  },
+  infoDes: {
+    fontSize: 13,
+    marginTop: 5,
   },
 });
 
