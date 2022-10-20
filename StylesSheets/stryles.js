@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    verticalAlign: "center",
   },
   image: {
     flex: 5,
@@ -49,14 +48,12 @@ const styles = StyleSheet.create({
   },
   Thumbnail: {
     flex: 4,
-    alignItems: "end",
     resizeMode: "contain",
   },
   dataContent: {
     flex: 6,
     alignItems: "center",
     justifyContent: "center",
-    verticalAlign: "center",
     marginStart: 20,
     textAlign: "center",
   },
