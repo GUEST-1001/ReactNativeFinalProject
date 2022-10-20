@@ -6,25 +6,25 @@ import { TouchableOpacity } from "react-native-web";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import ChoosePage from "./ChoosePage";
-import YogaInfoPage from "./YogaInfoPage";
+import MainPage from "./MainPage";
+import CoursePage from "./CoursePage";
+
 
 const Stack = createNativeStackNavigator();
 
-const NavChoosePage = () => {
+const NavMainPage = () => {
   return (
     <Stack.Navigator
-      initialRouteName="ChoosePage"
+      initialRouteName="MainPage"
       screenOptions={{
         headerStyle: { backgroundColor: "#63E0A3" },
-        headerTintColor: "#fff",
         headerShown: false,
       }}
     >
-      <Stack.Screen name="ChoosePage" component={ChoosePage} />
+      <Stack.Screen name="MainPage" component={MainPage} />
       <Stack.Screen
-        name="YogaInfo"
-        component={YogaInfoPage}
+        name="CoursePage"
+        component={CoursePage}
         options={{
           headerTitle: "",
           headerShown: true,
@@ -32,7 +32,7 @@ const NavChoosePage = () => {
         }}
       />
     </Stack.Navigator>
-  );
-};
+  )
+}
 
-export default NavChoosePage;
+export default NavMainPage

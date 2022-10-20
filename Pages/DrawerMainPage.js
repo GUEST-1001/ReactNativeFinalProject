@@ -10,8 +10,8 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer";
 
+import NavMainPage from "./NavMainPage";
 import MainPage from "./MainPage";
-import ChoosePage from "./ChoosePage";
 import NavChoosePage from "./NavChoosePage";
 import SettingPage from "./SettingPage";
 
@@ -29,12 +29,12 @@ const DrawerMainPage = () => {
     >
       <Drawer.Screen
         options={{ headerTitle: "", drawerLabel: "Home" }}
-        name="MainPage"
-        component={MainPage}
+        name="NavMainPage"
+        component={NavMainPage}
       />
       <Drawer.Screen
         options={{ headerTitle: "", drawerLabel: "Choose" }}
-        name="ChoosePage"
+        name="NavChoosePage"
         component={NavChoosePage}
       />
       <Drawer.Screen

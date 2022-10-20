@@ -1,5 +1,16 @@
 import React from "react";
-import { Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+  FlatList,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+} from "react-native";
 
 import { NavigationContainer ,DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -16,6 +27,16 @@ const MainPage = ({ navigation }) => {
   return (
     <View  style={styles.container}>
       <Text>MainPage</Text>
+      <TouchableOpacity
+          style={styles.Button}
+          onPress={() => {
+            navigation.navigate("CoursePage");
+          }}
+        >
+          <View style={styles.ButtonContainer}>
+            <Text>Go To CoursePage</Text>
+          </View>
+        </TouchableOpacity>
     </View>
   );
 };
