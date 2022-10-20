@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
+  TextInput,
 } from "react-native";
 import React, { useEffect, useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
@@ -18,18 +19,18 @@ import styles from "../StylesSheets/stryles";
 
 //Start Page
 const ChoosePage = ({ navigation }) => {
-
   //Set Variable
   const [yogaPose, setYogaPose] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState("");
 
   //Get Data
   const getData = async () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        "https://lightning-yoga-api.herokuapp.com/yoga_poses"
+        "https://lightning-yoga-api.herokuapp.com/yoga_poses?english_name="
       );
       setYogaPose(res.data.items);
       setLoading(false);
@@ -39,10 +40,28 @@ const ChoosePage = ({ navigation }) => {
     }
   };
 
+  //Get Data For Search
+  const getSearch = async () => {
+    try {
+      const res = await axios.get(
+        "https://lightning-yoga-api.herokuapp.com/yoga_poses?english_name=" +
+          search
+      );
+      setYogaPose(res.data.items);
+    } catch (error) {
+      setError(error); //set error to state error
+    }
+  };
+
   //Call 'getData' Function
   useEffect(() => {
     getData();
   }, []);
+
+  //Call 'getSearch' Function
+  useEffect(() => {
+    getSearch(search);
+  }, [search]);
 
   //Show Error if Error
   if (error) {
@@ -92,14 +111,21 @@ const ChoosePage = ({ navigation }) => {
 
   //Main Function
   return (
-    <ScrollView style={styles.scollViewContainer}>
-      <FlatList
-        data={yogaPose}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={_renderItem}
-        refreshing={loading}
+    <View style={styles.scollViewContainer}>
+      <TextInput
+        value={search}
+        onChangeText={(getSearch) => setSearch(getSearch)}
+        placeholder="Search here"
       />
-    </ScrollView>
+      <ScrollView>
+        <FlatList
+          data={yogaPose}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={_renderItem}
+          refreshing={loading}
+        />
+      </ScrollView>
+    </View>
   );
 };
 

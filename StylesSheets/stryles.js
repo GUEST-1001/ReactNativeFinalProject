@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
 
 
   scollViewContainer: {
+    flex:1,
     backgroundColor: "#63E0A3",
     padding: "5%",
   },
