@@ -103,6 +103,23 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 5,
   },
+
+  searchBar: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  searchInput: {
+    width: '80%',
+    padding: 5,
+    height: 30,
+    borderWidth: 2,
+    borderColor: '#000',
+    fontSize: 13,
+    borderRadius: 30,
+  },
 });
 
 export default styles;

@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 import axios from "axios";
 
@@ -112,11 +113,15 @@ const ChoosePage = ({ navigation }) => {
   //Main Function
   return (
     <View style={styles.scollViewContainer}>
-      <TextInput
-        value={search}
-        onChangeText={(getSearch) => setSearch(getSearch)}
-        placeholder="Search here"
-      />
+      <View style={styles.searchBar}>
+        <Ionicons name="search-sharp" size={25} color="#000" />
+        <TextInput
+          style={styles.searchInput}
+          value={search}
+          onChangeText={(getSearch) => setSearch(getSearch)}
+          placeholder="Search here"
+        />
+      </View>
       <ScrollView>
         <FlatList
           data={yogaPose}
