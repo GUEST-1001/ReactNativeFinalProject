@@ -117,6 +117,14 @@ const styles = StyleSheet.create({
     fontSize: 13,
     borderRadius: 30,
   },
+
+
+  courseContainer: {
+    flex: 1,
+    backgroundColor: "#63E0A3",
+    justifyContent: "center",
+    padding: "5%",
+  },
 });
 
 export default styles;
