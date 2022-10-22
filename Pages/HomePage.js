@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Image } from "react-native";
-import { TouchableOpacity } from "react-native-web";
+import { Text, View, Image, TouchableOpacity } from "react-native";
+
 
 import styles from "../StylesSheets/stryles";
 

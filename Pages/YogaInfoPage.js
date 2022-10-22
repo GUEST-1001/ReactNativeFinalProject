@@ -74,7 +74,7 @@ const YogaInfoPage = ({ navigation, route }) => {
 
   return (
     <View style={styles.infoContainer}>
-      <Image style={styles.infoImage} source={{ uri: url }} />
+      <Image style={styles.infoImage} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfBJhHB86PPHocV3n-ou6ZwUWX8vSPEZ-H3w&usqp=CAU' }} />
       <View style={styles.infoNameCon}>
         <Text style={styles.infoName}>{name}</Text>
       </View>

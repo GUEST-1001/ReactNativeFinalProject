@@ -17,8 +17,8 @@ const CoursePage = ({ navigation }) => {
   let resendTimerInterval;
 
   const [width, setWidth] = useState(0);
-  const animatedValue = useRef(new Animated.Value(width)).current
-  const reactive = useRef(new Animated.Value(width)).current
+  const animatedValue = useRef(new Animated.Value(0)).current
+  const reactive = useRef(new Animated.Value(0)).current
 
 
   const CountTimeLeft = (finalTime) => {
@@ -32,7 +32,6 @@ const CoursePage = ({ navigation }) => {
   };
 
   const TiggerTime = () => {
-    console.log(+new Date());
     const finalTime = +new Date() + targetTime;
     resendTimerInterval = setInterval(() => {
       CountTimeLeft(finalTime), 1000;
@@ -51,6 +50,8 @@ const CoursePage = ({ navigation }) => {
 
   useEffect(() => {
     reactive.setValue(-width)
+    console.log(-width)
+    console.log(animatedValue)
   }, [width]);
 
   return (
@@ -59,7 +60,6 @@ const CoursePage = ({ navigation }) => {
       <View
       onLayout={(e) => {
         const newWidth = e.nativeEvent.layout.width
-        console.log(newWidth)
         setWidth(newWidth);
       }}
         style={{

@@ -98,7 +98,7 @@ const ChoosePage = ({ navigation }) => {
         >
           <View style={styles.Felx}>
             <View style={styles.ButtonContainer}>
-              <Image style={styles.Thumbnail} source={{ uri: item.img_url }} />
+              <Image style={styles.Thumbnail} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfBJhHB86PPHocV3n-ou6ZwUWX8vSPEZ-H3w&usqp=CAU' }} />
 
               <View style={styles.dataContent}>
                 <Text style={styles.name}>{item.english_name}</Text>
@@ -122,14 +122,14 @@ const ChoosePage = ({ navigation }) => {
           placeholder="Search here"
         />
       </View>
-      <ScrollView>
+      <View>
         <FlatList
           data={yogaPose}
           keyExtractor={(item) => item.id.toString()}
           renderItem={_renderItem}
           refreshing={loading}
         />
-      </ScrollView>
+      </View>
     </View>
   );
 };
