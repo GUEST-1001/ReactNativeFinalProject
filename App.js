@@ -7,6 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import HomePage from "./Pages/HomePage";
 import DrawerMainPage from "./Pages/DrawerMainPage";
+import MainPage from "./Pages/MainPage";
+
 import { TouchableOpacity } from "react-native";
 
 const Stack = createNativeStackNavigator();
@@ -17,9 +19,6 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="HomePage"
         screenOptions={{
-          headerStyle: { backgroundColor: "#fff" },
-          headerTintColor: "#000",
-          headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
           headerShown: false,
         }}
       >

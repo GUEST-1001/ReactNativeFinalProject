@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  SafeAreaView,
 } from "react-native";
 
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
@@ -26,7 +27,8 @@ import styles from "../StylesSheets/stryles";
 
 const MainPage = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+
       <TouchableOpacity
         style={{ width: "100%", marginBottom: "3%", backgroundColor: "#fff" }}
       >
@@ -55,21 +57,17 @@ const MainPage = ({ navigation }) => {
         </View>
       </TouchableOpacity>
 
-
-<View style={{width:'100%', height:'50%', backgroundColor:'#fff'}}>
+      <View style={{ width: "100%", height: "50%", backgroundColor: "#fff" }}>
         <View style={styles.Felx}>
-
-            <SvgUri
-              width="100%"
-              height="100%"
-              preserveAspectRatio='xMinYMin slice'
-              fill="#000"
-              uri="https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
-            />
-
+          <SvgUri
+            width="100%"
+            height="100%"
+            preserveAspectRatio="xMinYMin slice"
+            fill="#000"
+            uri="https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
+          />
         </View>
-        </View>
-
+      </View>
 
       <TouchableOpacity
         style={styles.Button}
@@ -89,8 +87,10 @@ const MainPage = ({ navigation }) => {
         >
           <Text style={{ flex: 1 }}>Go To CoursePage</Text>
         </View>
+        
       </TouchableOpacity>
-    </View>
+
+    </SafeAreaView>
   );
 };
 

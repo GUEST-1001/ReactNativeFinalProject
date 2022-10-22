@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet,StatusBar  } from "react-native";
 import React from "react";
 
 const styles = StyleSheet.create({
@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#63E0A3",
     justifyContent: "center",
     padding: "5%",
+    marginTop:StatusBar.currentHeight
+    
   },
   content: {
     flex: 1,
@@ -32,6 +34,7 @@ const styles = StyleSheet.create({
     flex:1,
     backgroundColor: "#63E0A3",
     padding: "5%",
+    marginTop:StatusBar.currentHeight
   },
   Button: {
     width: "100%",

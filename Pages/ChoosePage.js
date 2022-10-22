@@ -121,7 +121,7 @@ const ChoosePage = ({ navigation }) => {
 
   //Main Function
   return (
-    <View style={styles.scollViewContainer}>
+    <SafeAreaView style={styles.scollViewContainer}>
       <View style={styles.searchBar}>
         <Ionicons name="search-sharp" size={25} color="#000" />
         <TextInput
@@ -139,7 +139,7 @@ const ChoosePage = ({ navigation }) => {
           refreshing={loading}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
