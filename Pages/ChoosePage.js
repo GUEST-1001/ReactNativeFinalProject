@@ -131,7 +131,7 @@ const ChoosePage = ({ navigation }) => {
           placeholder="Search here"
         />
       </View>
-      <View>
+      <View style={{marginBottom:'10%'}}>
         <FlatList
           data={yogaPose}
           keyExtractor={(item) => item.id.toString()}
