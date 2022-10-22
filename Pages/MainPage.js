@@ -6,7 +6,6 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
-  SafeAreaView,
   TouchableOpacity,
   ScrollView,
   TextInput,
@@ -20,6 +19,8 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
+
+import { SvgUri } from "react-native-svg";
 
 import styles from "../StylesSheets/stryles";
 
@@ -39,7 +40,7 @@ const MainPage = ({ navigation }) => {
             padding: 20,
           }}
         >
-          <View style={{flex:1}}>
+          <View style={{ flex: 1 }}>
             <Image
               source={require("../assets/icon.png")}
               style={{
@@ -50,19 +51,43 @@ const MainPage = ({ navigation }) => {
               }}
             />
           </View>
-          <Text style={{flex:1}}>Go To CoursePage</Text>
+          <Text style={{ flex: 1 }}>Go To CoursePage</Text>
         </View>
       </TouchableOpacity>
 
-      <Text>MainPage</Text>
+
+<View style={{width:'100%', height:'50%', backgroundColor:'#fff'}}>
+        <View style={styles.Felx}>
+
+            <SvgUri
+              width="100%"
+              height="100%"
+              preserveAspectRatio='xMinYMin slice'
+              fill="#000"
+              uri="https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
+            />
+
+        </View>
+        </View>
+
+
       <TouchableOpacity
         style={styles.Button}
         onPress={() => {
           navigation.navigate("CoursePage");
         }}
       >
-        <View style={styles.ButtonContainer}>
-          <Text>Go To CoursePage</Text>
+        <View
+          style={{
+            height: 120,
+            flexDirection: "row",
+            borderRadius: 30,
+            backgroundColor: "#fff",
+            marginHorizontal: 20,
+            padding: 20,
+          }}
+        >
+          <Text style={{ flex: 1 }}>Go To CoursePage</Text>
         </View>
       </TouchableOpacity>
     </View>

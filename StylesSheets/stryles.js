@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     marginBottom: "3%",
   },
   ButtonContainer: {
+    alignItems:'center',
     height: 120,
     flexDirection: "row",
     borderRadius: 30,

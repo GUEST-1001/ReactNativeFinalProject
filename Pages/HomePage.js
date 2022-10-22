@@ -23,7 +23,7 @@ const HomePage = ({ navigation }) => {
         />
 
         <View style={styles.content}>
-          <Text style={[styles.text, { color: "white" }]}>
+          <Text style={[styles.text, { color: "#fff" }]}>
             Touch screen to continue
           </Text>
         </View>

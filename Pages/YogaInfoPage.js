@@ -11,6 +11,8 @@ import {
 import React, { useEffect, useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
+import { SvgUri } from "react-native-svg";
+
 import axios from "axios";
 
 import styles from "../StylesSheets/stryles";
@@ -54,13 +56,13 @@ const YogaInfoPage = ({ navigation, route }) => {
   }
 
   //Show Loading Screen
-  if (loading === true) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="white" />
-      </View>
-    );
-  }
+  // if (loading === true) {
+  //   return (
+  //     <View style={styles.container}>
+  //       <ActivityIndicator size="large" color="white" />
+  //     </View>
+  //   );
+  // }
 
   //Render Yoga Pose
   const _renderItem = ({ item }) => {
@@ -74,18 +76,26 @@ const YogaInfoPage = ({ navigation, route }) => {
 
   return (
     <View style={styles.infoContainer}>
-      <Image style={styles.infoImage} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfBJhHB86PPHocV3n-ou6ZwUWX8vSPEZ-H3w&usqp=CAU' }} />
+      <View style={{flex:1,alignItems: "center",justifyContent: "flex-end",}}>
+      <SvgUri
+        width="250"
+        height="250"
+        preserveAspectRatio='xMinYMin slice'
+        fill='#000'
+        uri= {url}
+      />
+      </View>
       <View style={styles.infoNameCon}>
         <Text style={styles.infoName}>{name}</Text>
       </View>
       <View style={styles.desConrainer}>
         <FlatList
-        data={info}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={_renderItem}
-        refreshing={loading}
-        contentContainerStyle={{ flexGrow: 1, justifyContent:'center'}}
-      />
+          data={info}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={_renderItem}
+          refreshing={loading}
+          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        />
       </View>
     </View>
   );

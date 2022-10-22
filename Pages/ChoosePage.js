@@ -14,6 +14,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
+import { SvgUri } from "react-native-svg";
+
 import axios from "axios";
 
 import styles from "../StylesSheets/stryles";
@@ -98,7 +100,14 @@ const ChoosePage = ({ navigation }) => {
         >
           <View style={styles.Felx}>
             <View style={styles.ButtonContainer}>
-              <Image style={styles.Thumbnail} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfBJhHB86PPHocV3n-ou6ZwUWX8vSPEZ-H3w&usqp=CAU' }} />
+              <View style={{ flex: 4 }}>
+                <SvgUri
+                  width="100"
+                  height="100"
+                  fill="#000"
+                  uri={item.img_url}
+                />
+              </View>
 
               <View style={styles.dataContent}>
                 <Text style={styles.name}>{item.english_name}</Text>
