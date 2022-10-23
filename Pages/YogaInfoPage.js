@@ -32,7 +32,6 @@ const YogaInfoPage = ({ navigation, route }) => {
       const res = await axios.get(
         "https://lightning-yoga-api.herokuapp.com/yoga_poses/" + id
       );
-      console.log(res.data.yoga_categories);
       setInfo(res.data.yoga_categories);
       setLoading(false);
     } catch (error) {
@@ -55,7 +54,21 @@ const YogaInfoPage = ({ navigation, route }) => {
     );
   }
 
-  //Show Loading Screen
+  const OnLoading = () => {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          padding: "5%",
+        }}
+      >
+        <ActivityIndicator size="large" color="#63E0A3" />
+      </View>
+    );
+  };
+
+  // Show Loading Screen
   // if (loading === true) {
   //   return (
   //     <View style={styles.container}>
@@ -75,29 +88,35 @@ const YogaInfoPage = ({ navigation, route }) => {
   };
 
   return (
-    <View style={styles.infoContainer}>
-      <View style={{flex:1,alignItems: "center",justifyContent: "flex-end",}}>
-      <SvgUri
-        width="250"
-        height="250"
-        preserveAspectRatio='xMinYMin slice'
-        fill='#000'
-        uri= {url}
-      />
+    <SafeAreaView style={styles.infoContainer}>
+      <View
+        style={{ flex: 1, alignItems: "center", justifyContent: "flex-end" }}
+      >
+        <SvgUri
+          width="250"
+          height="250"
+          preserveAspectRatio="xMinYMin slice"
+          fill="#000"
+          uri={url}
+        />
       </View>
       <View style={styles.infoNameCon}>
         <Text style={styles.infoName}>{name}</Text>
       </View>
       <View style={styles.desConrainer}>
-        <FlatList
-          data={info}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={_renderItem}
-          refreshing={loading}
-          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
-        />
+        {loading ? (
+          <OnLoading />
+        ) : (
+          <FlatList
+            data={info}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={_renderItem}
+            refreshing={loading}
+            contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+          />
+        )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

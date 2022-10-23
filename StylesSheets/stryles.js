@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
   infoImage: {
     height: "40%",
     resizeMode: "contain",
+    marginBottom:10,
   },
   infoNameCon: {
     alignItems: "center",
@@ -142,6 +143,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#63E0A3",
     justifyContent: "center",
     padding: "5%",
+  },
+
+  couseDesCon: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 30,
+    backgroundColor: "#fff",
+    padding:20,
+    marginTop:20,
+    marginBottom:20,
+  },
+  couseDes: {
+    fontSize: 13,
+    textAlign:'justify'
   },
 });
 

@@ -101,6 +101,8 @@ const MainPage = ({ navigation }) => {
             navigation.navigate("CourseDetail", {
               id: item.id,
               name: item.name,
+              des: item.description,
+              imageUrl: image,
             });
           }}
         >
