@@ -61,8 +61,23 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   name: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
+    textAlign: "center",
+  },
+  courseName: {
+    flex: 6,
+    fontSize: 18,
+    fontWeight: "bold",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+  },
+
+  haderText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 
 

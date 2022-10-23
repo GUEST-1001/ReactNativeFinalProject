@@ -16,6 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import MainPage from "./MainPage";
 import CoursePage from "./CoursePage";
+import CourseDetail from "./CourseDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,15 @@ const NavMainPage = () => {
       }}
     >
       <Stack.Screen name="MainPage" component={MainPage} />
+      <Stack.Screen
+        name="CourseDetail"
+        component={CourseDetail}
+        options={{
+          headerTitle: "",
+          headerShown: true,
+          headerShadowVisible: false,
+        }}
+      />
       <Stack.Screen
         name="CoursePage"
         component={CoursePage}
