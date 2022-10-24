@@ -4,12 +4,10 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
-  SafeAreaView,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React, { useEffect, useState, useCallback } from "react";
-import { useFocusEffect } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
 import { SvgUri } from "react-native-svg";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -33,7 +31,7 @@ const CourseDetail = ({ navigation, route }) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      setError(error); //set error to state error
+      setError(error);
     }
   };
 
@@ -41,7 +39,6 @@ const CourseDetail = ({ navigation, route }) => {
     getData(id);
   }, [id]);
 
-  //Show Error if Error
   if (error) {
     return (
       <View style={styles.container}>
@@ -59,23 +56,12 @@ const CourseDetail = ({ navigation, route }) => {
           padding: "5%",
         }}
       >
-        <ActivityIndicator size="large" color='#fff' />
+        <ActivityIndicator size="large" color="#fff" />
       </View>
     );
   };
 
-  //   // Show Loading Screen
-  //   if (loading === true) {
-  //     return (
-  //       <View style={styles.container}>
-  //         <ActivityIndicator size="large" color="white" />
-  //       </View>
-  //     );
-  //   }
-
-  //Render Yoga Pose
   const _renderItem = ({ item }) => {
-    console.log(item.english_name);
     return (
       <TouchableOpacity
         style={styles.horizontalButton}
@@ -127,7 +113,6 @@ const CourseDetail = ({ navigation, route }) => {
             onPress={() => {
               navigation.navigate("CoursePage", {
                 id: id,
-                name: name,
               });
             }}
           >

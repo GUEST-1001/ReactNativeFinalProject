@@ -1,23 +1,10 @@
-import {
-  Text,
-  View,
-  Button,
-  TextInput,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons } from "@expo/vector-icons";
 
 import MainPage from "./MainPage";
 import CoursePage from "./CoursePage";
 import CourseDetail from "./CourseDetail";
-import TestPage from "./TestPage";
 import YogaInfoPage from "./YogaInfoPage";
 
 const Stack = createNativeStackNavigator();
@@ -43,16 +30,6 @@ const NavMainPage = () => {
       />
 
       <Stack.Screen
-        name="TestPage"
-        component={TestPage}
-        options={{
-          headerTitle: "",
-          headerShown: true,
-          headerShadowVisible: false,
-        }}
-      />
-
-      <Stack.Screen
         name="YogaInfo"
         component={YogaInfoPage}
         options={{
@@ -61,18 +38,7 @@ const NavMainPage = () => {
           headerShadowVisible: false,
         }}
       />
-      <Stack.Screen
-        name="CoursePage"
-        component={CoursePage}
-        options={{
-          headerTitle: "",
-          headerShown: true,
-          headerShadowVisible: false,
-          // headerLeft: () => (
-          //   <Ionicons name="search-sharp" size={25} color="#000" />
-          // ),
-        }}
-      />
+      <Stack.Screen name="CoursePage" component={CoursePage} />
     </Stack.Navigator>
   );
 };

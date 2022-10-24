@@ -1,16 +1,5 @@
-import {
-  ActivityIndicator,
-  Animated,
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { Animated, Text, View, SafeAreaView } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import { HeaderBackButton } from "react-navigation-header-buttons";
 import { SvgUri } from "react-native-svg";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -20,8 +9,7 @@ import styles from "../StylesSheets/stryles";
 import { Easing } from "react-native-reanimated";
 
 const CoursePage = ({ navigation, route }) => {
-  const { id, name } = route.params;
-  let index = 0;
+  const { id } = route.params;
 
   const [timeLeft, setTimeLeft] = useState(null);
   let targetTime = 5000;
@@ -31,7 +19,6 @@ const CoursePage = ({ navigation, route }) => {
   const [yogaPre, setYogaPre] = useState([]);
   const [yogaNext, setYogaNext] = useState([]);
 
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   let yogaIndex = useRef(0);
   let yogaLength = useRef(0);
@@ -60,7 +47,6 @@ const CoursePage = ({ navigation, route }) => {
 
   const getData = async () => {
     try {
-      setLoading(true);
       const res = await axios.get(
         "https://lightning-yoga-api.herokuapp.com/yoga_categories/" + id
       );
@@ -71,14 +57,12 @@ const CoursePage = ({ navigation, route }) => {
       } else {
         setYogaPre([]);
       }
-      if (yogaIndex.current+1 != yogaLength.current) {
+      if (yogaIndex.current + 1 != yogaLength.current) {
         setYogaNext(res.data.yoga_poses[yogaIndex.current + 1]);
       } else {
         setYogaNext([]);
       }
-      setLoading(false);
     } catch (error) {
-      setLoading(false);
       setError(error);
     }
   };
@@ -119,29 +103,6 @@ const CoursePage = ({ navigation, route }) => {
       </View>
     );
   }
-
-  const OnLoading = () => {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          padding: "5%",
-        }}
-      >
-        <ActivityIndicator size="large" color="#fff" />
-      </View>
-    );
-  };
-
-  const _renderItem = ({ item, index }) => {
-    console.log(item.english_name);
-    return (
-      <View>
-        <Text>{item.english_name}</Text>
-      </View>
-    );
-  };
 
   return (
     <SafeAreaView
@@ -199,7 +160,6 @@ const CoursePage = ({ navigation, route }) => {
         </View>
       </View>
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
-
         <View style={{}}>
           <View
             style={{
@@ -218,8 +178,8 @@ const CoursePage = ({ navigation, route }) => {
               }}
             >
               <SvgUri
-                width={safeWidth * 0.20}
-                height={safeWidth * 0.20}
+                width={safeWidth * 0.2}
+                height={safeWidth * 0.2}
                 fill="#000"
                 uri={yogaPre.img_url}
               />
@@ -247,8 +207,8 @@ const CoursePage = ({ navigation, route }) => {
               }}
             >
               <SvgUri
-                width={safeWidth * 0.20}
-                height={safeWidth * 0.20}
+                width={safeWidth * 0.2}
+                height={safeWidth * 0.2}
                 fill="#000"
                 uri={yogaNext.img_url}
               />

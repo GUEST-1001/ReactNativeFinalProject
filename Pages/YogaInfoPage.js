@@ -1,15 +1,11 @@
 import {
-  StyleSheet,
   Text,
   View,
   ActivityIndicator,
   FlatList,
-  Image,
   SafeAreaView,
-  ScrollView,
 } from "react-native";
-import React, { useEffect, useState, useCallback } from "react";
-import { useFocusEffect } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
 
 import { SvgUri } from "react-native-svg";
 
@@ -17,15 +13,12 @@ import axios from "axios";
 
 import styles from "../StylesSheets/stryles";
 
-//Start Page
 const YogaInfoPage = ({ navigation, route }) => {
-  //Set Variable
   const { id, name, url } = route.params;
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  //Get Data
   const getData = async (id) => {
     try {
       setLoading(true);
@@ -36,16 +29,14 @@ const YogaInfoPage = ({ navigation, route }) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      setError(error); //set error to state error
+      setError(error);
     }
   };
 
-  //Call 'getData' Function
   useEffect(() => {
     getData(id);
   }, [id]);
 
-  //Show Error if Error
   if (error) {
     return (
       <View style={styles.container}>
@@ -68,16 +59,6 @@ const YogaInfoPage = ({ navigation, route }) => {
     );
   };
 
-  // Show Loading Screen
-  // if (loading === true) {
-  //   return (
-  //     <View style={styles.container}>
-  //       <ActivityIndicator size="large" color="white" />
-  //     </View>
-  //   );
-  // }
-
-  //Render Yoga Pose
   const _renderItem = ({ item }) => {
     return (
       <SafeAreaView>

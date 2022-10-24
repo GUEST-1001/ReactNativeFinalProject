@@ -1,27 +1,14 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  StyleSheet,
   Text,
   View,
   ActivityIndicator,
   FlatList,
   Image,
   TouchableOpacity,
-  ScrollView,
-  TextInput,
   SafeAreaView,
 } from "react-native";
 
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from "@react-navigation/drawer";
-
-import { SvgUri } from "react-native-svg";
 import axios from "axios";
 
 import styles from "../StylesSheets/stryles";
@@ -41,7 +28,7 @@ const MainPage = ({ navigation }) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      setError(error); //set error to state error
+      setError(error);
     }
   };
 
@@ -49,7 +36,6 @@ const MainPage = ({ navigation }) => {
     getData();
   }, []);
 
-  //Show Error if Error
   if (error) {
     return (
       <View style={styles.container}>
@@ -58,7 +44,6 @@ const MainPage = ({ navigation }) => {
     );
   }
 
-  //Show Loading Screen
   if (loading === true) {
     return (
       <View style={styles.container}>
@@ -67,7 +52,6 @@ const MainPage = ({ navigation }) => {
     );
   }
 
-  //Render Yoga Pose
   const _renderItem = ({ item }) => {
     let image =
       item.id === 1
