@@ -8,11 +8,11 @@
 </div>
 
 ### index
-<a href="#About" ><strong>Go TO About This Project »</strong> </a>
+<a href="#About" ><strong>Go To About This Project »</strong> </a>
 
 <a href="#Built" ><strong>Go To Built With »</strong> </a>
 
-<a href="#Team" ><strong>Go TO About Team »</strong> </a>
+<a href="#Team" ><strong>Go To About Team »</strong> </a>
 
 <br><br><br>
 
