@@ -75,27 +75,24 @@ const CourseDetail = ({ navigation, route }) => {
 
   //Render Yoga Pose
   const _renderItem = ({ item }) => {
+    console.log(item.english_name);
     return (
-      <SafeAreaView style={styles.Felx}>
-        <TouchableOpacity style={styles.Button}>
-          <View style={styles.Felx}>
-            <View style={styles.ButtonContainer}>
-              <View style={{ flex: 4 }}>
-                <SvgUri
-                  width="100"
-                  height="100"
-                  fill="#000"
-                  uri={item.img_url}
-                />
-              </View>
+      <TouchableOpacity
+        style={styles.horizontalButton}
+        onPress={() => {
+            navigation.navigate("YogaInfo", {
+              id: item.id,
+              name: item.english_name,
+              url: item.img_url,
+            });
+          }}
+      >
+        <View style={{ width: 100, height: 100 }}>
+          <SvgUri width="100" height="100" fill="#000" uri={item.img_url} />
+        </View>
 
-              <View style={styles.dataContent}>
-                <Text style={styles.name}>{item.english_name}</Text>
-              </View>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </SafeAreaView>
+        <Text style={styles.textStyle}> {item.english_name}</Text>
+      </TouchableOpacity>
     );
   };
 
@@ -111,21 +108,30 @@ const CourseDetail = ({ navigation, route }) => {
           source={{ uri: imageUrl }}
         />
       </View>
-      <View style={styles.infoNameCon}>
+      <View style={[styles.infoNameCon, { marginBottom: 20 }]}>
         <Text style={styles.infoName}>{name}</Text>
       </View>
-      <View style={styles.couseDesCon}>
-        <Text style={styles.couseDes}>{des}</Text>
-      </View>
-      <View style={{ marginBottom: "10%" }}>
-        <FlatList
-          horizontal
-          data={detail}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={_renderItem}
-          refreshing={loading}
-        />
-      </View>
+      <ScrollView>
+        <View style={styles.couseDesCon}>
+          <Text style={styles.couseDes}>{des}</Text>
+        </View>
+
+        <View style={{ alignItems: "center", marginBottom:20, }}>
+          <TouchableOpacity style={styles.horizontalButton}>
+            <Text> START</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ alignItems: "center" }}>
+          <FlatList
+            data={detail}
+            keyExtractor={(item) => item.id.toString()}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            renderItem={_renderItem}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };

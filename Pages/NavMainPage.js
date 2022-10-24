@@ -17,6 +17,8 @@ import { Ionicons } from "@expo/vector-icons";
 import MainPage from "./MainPage";
 import CoursePage from "./CoursePage";
 import CourseDetail from "./CourseDetail";
+import TestPage from "./TestPage";
+import YogaInfoPage from "./YogaInfoPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +35,26 @@ const NavMainPage = () => {
       <Stack.Screen
         name="CourseDetail"
         component={CourseDetail}
+        options={{
+          headerTitle: "",
+          headerShown: true,
+          headerShadowVisible: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="TestPage"
+        component={TestPage}
+        options={{
+          headerTitle: "",
+          headerShown: true,
+          headerShadowVisible: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="YogaInfo"
+        component={YogaInfoPage}
         options={{
           headerTitle: "",
           headerShown: true,

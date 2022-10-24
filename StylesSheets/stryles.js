@@ -151,12 +151,40 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: "#fff",
     padding:20,
-    marginTop:20,
     marginBottom:20,
   },
   couseDes: {
     fontSize: 13,
     textAlign:'justify'
+  },
+
+
+  textStyle: {
+    fontSize: 20,
+    marginBottom:10,
+    color: "#000",
+  },
+  listStyle: {
+    textAlign: "center",
+  },
+
+  horizontalButton: {
+    Felx:1,
+    width:150,
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 30,
+    marginLeft:5,
+    marginRight:5,
+  },
+  horizontalButtonContainer: {
+    alignItems:'center',
+    height: 180,
+    flexDirection: "row",
+    borderRadius: 30,
+    backgroundColor: "#fff",
+    marginHorizontal: 20,
+    padding: 20,
   },
 });
 
