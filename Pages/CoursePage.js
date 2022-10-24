@@ -12,7 +12,7 @@ const CoursePage = ({ navigation, route }) => {
   const { id } = route.params;
 
   const [timeLeft, setTimeLeft] = useState(null);
-  let targetTime = 5000;
+  let targetTime = 30000;
   let resendTimerInterval;
 
   const [yoga, setYoga] = useState([]);
