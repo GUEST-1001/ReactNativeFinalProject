@@ -154,12 +154,13 @@ const styles = StyleSheet.create({
     marginBottom:20,
   },
   couseDes: {
-    fontSize: 13,
+    fontSize: 14,
     textAlign:'justify'
   },
 
 
   textStyle: {
+    textAlign: "center",
     fontSize: 20,
     marginBottom:10,
     color: "#000",

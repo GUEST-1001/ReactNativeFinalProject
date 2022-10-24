@@ -5,17 +5,33 @@ import {
   Text,
   View,
   SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { HeaderBackButton } from "react-navigation-header-buttons";
+import { SvgUri } from "react-native-svg";
+import { Ionicons } from "@expo/vector-icons";
+
+import axios from "axios";
 
 import styles from "../StylesSheets/stryles";
 import { Easing } from "react-native-reanimated";
 
-const CoursePage = ({ navigation }) => {
+const CoursePage = ({ navigation, route }) => {
+  const { id, name } = route.params;
+  let index = 0;
+
   const [timeLeft, setTimeLeft] = useState(null);
   let targetTime = 5000;
   let resendTimerInterval;
+
+  const [yoga, setYoga] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  let yogaIndex = useRef(0);
+  let yogaLength = null;
 
   const [width, setWidth] = useState(0);
   const animatedValue = useRef(new Animated.Value(0)).current;
@@ -27,9 +43,35 @@ const CoursePage = ({ navigation }) => {
       setTimeLeft(Math.round(difference / 1000));
     } else {
       clearInterval(resendTimerInterval);
+      yogaIndex.current = yogaIndex.current + 1
+      console.log(yogaIndex.current)
+      getData()
       // navigation.goBack();
     }
   };
+
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        "https://lightning-yoga-api.herokuapp.com/yoga_categories/" + id
+      );
+      setYoga(res.data.yoga_poses[yogaIndex.current]);
+      yogaLength = res.data.yoga_poses.length
+      console.log(yogaIndex.current)
+      console.log(res.data.yoga_poses[yogaIndex.current])
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  };
+
+
+  useEffect(() => {
+    getData();
+  }, []);
+
 
   const TiggerTime = () => {
     const finalTime = +new Date() + targetTime;
@@ -51,6 +93,37 @@ const CoursePage = ({ navigation }) => {
       easing: Easing.linear(),
     }).start();
   }, [width]);
+
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text>{error.message}</Text>
+      </View>
+    );
+  }
+
+  const OnLoading = () => {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          padding: "5%",
+        }}
+      >
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+  };
+
+  const _renderItem = ({ item, index }) => {
+    console.log(item.english_name);
+    return (
+      <View>
+        <Text>{item.english_name}</Text>
+      </View>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.courseContainer}>
@@ -84,6 +157,15 @@ const CoursePage = ({ navigation }) => {
           }}
         />
       </View>
+      <View>
+        {/* <FlatList
+          data={yoga}
+          keyExtractor={(item, index) => item.id.toString()}
+          renderItem={_renderItem}
+        /> */}
+      </View>
+      <Text>{yoga.english_name}</Text>
+      {console.log('-------------------------------')}
     </SafeAreaView>
   );
 };

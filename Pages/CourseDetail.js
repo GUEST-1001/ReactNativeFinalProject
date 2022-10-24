@@ -11,6 +11,7 @@ import {
 import React, { useEffect, useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import { SvgUri } from "react-native-svg";
+import { Ionicons } from "@expo/vector-icons";
 
 import axios from "axios";
 
@@ -29,7 +30,6 @@ const CourseDetail = ({ navigation, route }) => {
         "https://lightning-yoga-api.herokuapp.com/yoga_categories/" + id
       );
       setDetail(res.data.yoga_poses);
-      console.log(res.data.yoga_poses);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -59,7 +59,7 @@ const CourseDetail = ({ navigation, route }) => {
           padding: "5%",
         }}
       >
-        <ActivityIndicator size="large" color="#63E0A3" />
+        <ActivityIndicator size="large" color='#fff' />
       </View>
     );
   };
@@ -80,12 +80,12 @@ const CourseDetail = ({ navigation, route }) => {
       <TouchableOpacity
         style={styles.horizontalButton}
         onPress={() => {
-            navigation.navigate("YogaInfo", {
-              id: item.id,
-              name: item.english_name,
-              url: item.img_url,
-            });
-          }}
+          navigation.navigate("YogaInfo", {
+            id: item.id,
+            name: item.english_name,
+            url: item.img_url,
+          });
+        }}
       >
         <View style={{ width: 100, height: 100 }}>
           <SvgUri width="100" height="100" fill="#000" uri={item.img_url} />
@@ -116,20 +116,60 @@ const CourseDetail = ({ navigation, route }) => {
           <Text style={styles.couseDes}>{des}</Text>
         </View>
 
-        <View style={{ alignItems: "center", marginBottom:20, }}>
-          <TouchableOpacity style={styles.horizontalButton}>
-            <Text> START</Text>
+        <View style={{ alignItems: "center", marginBottom: 20 }}>
+          <TouchableOpacity
+            style={{
+              width: 150,
+              alignItems: "center",
+              backgroundColor: "#FF9171",
+              borderRadius: 30,
+            }}
+            onPress={() => {
+              navigation.navigate("CoursePage", {
+                id: id,
+                name: name,
+              });
+            }}
+          >
+            <View
+              style={{
+                margin: 10,
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Ionicons
+                style={{
+                  fontSize: 25,
+                  color: "#000",
+                }}
+                name="caret-forward-sharp"
+              />
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: "#000",
+                  fontWeight: "bold",
+                }}
+              >
+                START
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
 
         <View style={{ alignItems: "center" }}>
-          <FlatList
-            data={detail}
-            keyExtractor={(item) => item.id.toString()}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            renderItem={_renderItem}
-          />
+          {loading ? (
+            <OnLoading />
+          ) : (
+            <FlatList
+              data={detail}
+              keyExtractor={(item) => item.id.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={_renderItem}
+            />
+          )}
         </View>
       </ScrollView>
     </View>
