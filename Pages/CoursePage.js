@@ -28,12 +28,16 @@ const CoursePage = ({ navigation, route }) => {
   let resendTimerInterval;
 
   const [yoga, setYoga] = useState([]);
+  const [yogaPre, setYogaPre] = useState([]);
+  const [yogaNext, setYogaNext] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   let yogaIndex = useRef(0);
-  let yogaLength = null;
+  let yogaLength = useRef(0);
 
   const [width, setWidth] = useState(0);
+  const [safeWidth, setSafeWidth] = useState(0);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const reactive = useRef(new Animated.Value(0)).current;
 
@@ -43,10 +47,14 @@ const CoursePage = ({ navigation, route }) => {
       setTimeLeft(Math.round(difference / 1000));
     } else {
       clearInterval(resendTimerInterval);
-      yogaIndex.current = yogaIndex.current + 1
-      console.log(yogaIndex.current)
-      getData()
-      // navigation.goBack();
+      yogaIndex.current = yogaIndex.current + 1;
+      getData();
+      animatedValue.setValue(0);
+      if (yogaIndex.current === yogaLength.current) {
+        navigation.goBack();
+      } else {
+        TiggerTime();
+      }
     }
   };
 
@@ -57,9 +65,17 @@ const CoursePage = ({ navigation, route }) => {
         "https://lightning-yoga-api.herokuapp.com/yoga_categories/" + id
       );
       setYoga(res.data.yoga_poses[yogaIndex.current]);
-      yogaLength = res.data.yoga_poses.length
-      console.log(yogaIndex.current)
-      console.log(res.data.yoga_poses[yogaIndex.current])
+      yogaLength.current = res.data.yoga_poses.length;
+      if (yogaIndex.current != 0) {
+        setYogaPre(res.data.yoga_poses[yogaIndex.current - 1]);
+      } else {
+        setYogaPre([]);
+      }
+      if (yogaIndex.current+1 != yogaLength.current) {
+        setYogaNext(res.data.yoga_poses[yogaIndex.current + 1]);
+      } else {
+        setYogaNext([]);
+      }
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -67,11 +83,9 @@ const CoursePage = ({ navigation, route }) => {
     }
   };
 
-
   useEffect(() => {
     getData();
   }, []);
-
 
   const TiggerTime = () => {
     const finalTime = +new Date() + targetTime;
@@ -85,6 +99,10 @@ const CoursePage = ({ navigation, route }) => {
   }, []);
 
   useEffect(() => {
+    RunAnimated();
+  }, [width, yogaIndex.current]);
+
+  const RunAnimated = () => {
     reactive.setValue(-width);
     Animated.timing(animatedValue, {
       toValue: reactive,
@@ -92,7 +110,7 @@ const CoursePage = ({ navigation, route }) => {
       useNativeDriver: true,
       easing: Easing.linear(),
     }).start();
-  }, [width]);
+  };
 
   if (error) {
     return (
@@ -126,46 +144,147 @@ const CoursePage = ({ navigation, route }) => {
   };
 
   return (
-    <SafeAreaView style={styles.courseContainer}>
-      <Text>{timeLeft}</Text>
-      <View
-        onLayout={(e) => {
-          const newWidth = e.nativeEvent.layout.width;
-          setWidth(newWidth);
-        }}
-        style={{
-          height: 20,
-          backgroundColor: "#00000033",
-          borderRadius: 20,
-          overflow: "hidden",
-        }}
-      >
-        <Animated.View
-          style={{
-            height: 20,
-            borderRadius: 20,
-            width: "100%",
-            backgroundColor: "#00000088",
-            position: "absolute",
-            left: 0,
-            top: 0,
-            transform: [
-              {
-                translateX: animatedValue,
-              },
-            ],
-          }}
-        />
-      </View>
+    <SafeAreaView
+      onLayout={(e) => {
+        const newWidth = e.nativeEvent.layout.width;
+        setSafeWidth(newWidth);
+      }}
+      style={styles.courseContainer}
+    >
       <View>
-        {/* <FlatList
-          data={yoga}
-          keyExtractor={(item, index) => item.id.toString()}
-          renderItem={_renderItem}
-        /> */}
+        <View
+          style={{
+            Felx: 1,
+            height: "80%",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <SvgUri
+            width={safeWidth * 0.85}
+            height={safeWidth * 0.85}
+            fill="#000"
+            uri={yoga.img_url}
+          />
+        </View>
+
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <View
+            style={{
+              Felx: 1,
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#fff",
+              borderRadius: 30,
+            }}
+          >
+            <Text
+              style={{
+                textAlign: "center",
+                fontSize: 30,
+                fontWeight: "bold",
+                color: "#000",
+                margin: 5,
+              }}
+            >
+              {yoga.english_name}
+            </Text>
+          </View>
+        </View>
       </View>
-      <Text>{yoga.english_name}</Text>
-      {console.log('-------------------------------')}
+      <View style={{ flex: 1, justifyContent: "flex-end" }}>
+
+        <View style={{}}>
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <SvgUri
+                width={safeWidth * 0.20}
+                height={safeWidth * 0.20}
+                fill="#000"
+                uri={yogaPre.img_url}
+              />
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Ionicons name="hourglass" size={30} color="#000" />
+              <Text style={{ fontSize: 30 }}>{timeLeft}</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <SvgUri
+                width={safeWidth * 0.20}
+                height={safeWidth * 0.20}
+                fill="#000"
+                uri={yogaNext.img_url}
+              />
+            </View>
+          </View>
+        </View>
+
+        <View>
+          <View
+            onLayout={(e) => {
+              const newWidth = e.nativeEvent.layout.width;
+              setWidth(newWidth);
+            }}
+            style={{
+              height: 20,
+              backgroundColor: "#00000033",
+              borderRadius: 20,
+              overflow: "hidden",
+            }}
+          >
+            <Animated.View
+              style={{
+                height: 20,
+                borderRadius: 20,
+                width: "100%",
+                backgroundColor: "#00000088",
+                transform: [
+                  {
+                    translateX: animatedValue,
+                  },
+                ],
+              }}
+            />
+          </View>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };

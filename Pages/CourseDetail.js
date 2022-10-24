@@ -91,7 +91,7 @@ const CourseDetail = ({ navigation, route }) => {
           <SvgUri width="100" height="100" fill="#000" uri={item.img_url} />
         </View>
 
-        <Text style={styles.textStyle}> {item.english_name}</Text>
+        <Text style={styles.textStyle}>{item.english_name}</Text>
       </TouchableOpacity>
     );
   };

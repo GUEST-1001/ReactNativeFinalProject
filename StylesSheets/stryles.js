@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
 
   textStyle: {
     textAlign: "center",
+    fontWeight: "bold",
     fontSize: 20,
     marginBottom:10,
     color: "#000",
