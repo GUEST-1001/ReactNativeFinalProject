@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/YogaLogo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#63E0A3"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
