@@ -2,10 +2,12 @@
 
 <div align="center">
   <h1 align="center">All Ultimate Yoga Pose</h3>
+  <br><br>
   <a href="https://github.com/GUEST-1001/ReactNativeFinalProject">
-    <img src="/assets/YogaLogo.png" alt="Logo" width="auto" height="500">
+    <img src="https://raw.githubusercontent.com/GUEST-1001/ReactNativeFinalProject/master/%23Doc/Poster.png" alt="Logo" width="70%" height="auto">
   </a>
 </div>
+<br><br>
 
 ### index
 <a href="#About" ><strong>Go To About This Project »</strong> </a>
@@ -24,13 +26,16 @@
 ทางผู้จัดทำมีความสนใจในเรื่องโยคะมาตั้งแต่ต้น เนื่องด้วยมีสมาชิกคนนึงที่มีปัญหาเรื่องปวดหลังเรื้อรังเป็นอย่างมาก
 และด้วยไลฟ์สไตล์กับการที่มีแรงที่ไม่ค่อยเอื้อต่อการออกกำลังกายเท่าไหร่ การทำโยคะที่ไม่ได้ใช้แรงมากสามารถทำได้ในเวลาอันสั้นและไม่ต้องพึ่งอุปกรณ์ช่วยจึงเป็นคำตอบ
 ทางเราจึงอยากทำแอปที่มี course ที่สามารถออกกำลังส่วนต่างๆ ของร่างกายได้ และสามารถค้นหาท่าที่ต้องการ รวมทั้งรู้ถึงผลประโยชน์ของท่านั้นๆ ด้วย
-
+<br><br>
 <a href="https://github.com/GUEST-1001/ReactNativeFinalProject/blob/master/%23Doc/%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B9%82%E0%B8%A2%E0%B8%84%E0%B8%B0%E0%B8%81%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%B5%E0%B8%9A_All%20Ultimate%20Yoga%20Pose.pdf" ><strong>Proposal »</strong> </a>
+
+<a href="https://github.com/GUEST-1001/ReactNativeFinalProject/blob/master/%23Doc/Poster.png" ><strong>Poster »</strong> </a>
 
 <a href="https://github.com/GUEST-1001/ReactNativeFinalProject/blob/master/%23How%20To%20Use/Get-started-in-Canva.pdf" ><strong>Manual PDF »</strong> </a>
 
 <a href="https://youtu.be/x2NYxKn1zlY" ><strong>Manual VDO »</strong> </a>
 
+<br><br>
 <div align="center">
   <a href="Scr/สกรีนช็อต 2022-10-24 133557.jpg">
     <img src="Scr/สกรีนช็อต 2022-10-24 133557.jpg" alt="Logo" width="auto" height="300">
